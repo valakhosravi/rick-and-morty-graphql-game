@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+$primary: #97ce4c;
+$secondary: #f675da;
+@import '~bootstrap/scss/bootstrap';
+body {
+    font-family: 'Orbitron', cursive;
+}
