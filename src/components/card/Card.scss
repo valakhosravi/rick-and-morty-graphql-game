@@ -1,0 +1,11 @@
+.rm-card {
+    cursor: pointer;
+    transition: .3s;
+    background-color: #fff;
+    &:hover {
+        transform: scale(1.05)
+    }
+    &:active {
+        transform: scale(.95)
+    }
+}

@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from 'react'
 import { gql, useQuery } from "@apollo/client";
+import Card from '../components/card/Card';
+import { useSelector } from 'react-redux';
 
 export default function Game() {
+    const score = useSelector((state) => state.score.value);
 
-
-    const [score, setScore] = useState(0);
     const [query, setQuery] = useState(getQuery(generateRandomDistinctNumbers(2, 1, 42).join(', ')));
-    const [loaded, setLoaded] = useState(false);
     const [options, setOptions] = useState([]);
-    const [episode, setEpisode] = useState();
-    const { loading, error, data } = useQuery(query);
+
+    const { loading, error, data, refetch } = useQuery(query);
+
+    const episode = data?.episodesByIds[0];
 
     useEffect(() => {
+        console.log('fetch data', data);
         if (data) {
-            setEpisode(data.episodesByIds[0])
+            // setEpisode(data.episodesByIds[0])
             const { episodesByIds: [{ characters: characters1 }, { characters: characters2 }] } = data;
             console.log('scharacters1', characters1);
             console.log('scharacters2', characters2);
@@ -33,6 +36,13 @@ export default function Game() {
             setOptions(result);
         }
     }, [data, error])
+
+
+    useEffect(() => {
+        // setOptions([]);
+        // refetch();
+        setQuery(getQuery(generateRandomDistinctNumbers(2, 1, 42).join(', ')));
+    }, [score])
 
 
     function getQuery(ids) {
@@ -76,53 +86,40 @@ export default function Game() {
         return result;
     }
 
-    function handleLoad() {
-        setLoaded(true);
-    }
+    // if (loading) return <p className='text-white'>Loading...</p>;
 
-    const onOptionClick = (option) => {
-        console.log('option', option);
-    }
+    if (error) return <p className='text-danger'>Error</p>;
 
-    if (loading) return <p>Loading...</p>;
-
-    if (error) return <p>Error</p>;
-
-    if (!episode) return <p>Loading...</p>;
+    // if (!episode) return <p className='text-white'>Loading...</p>;
 
     return (
         <div className='container'>
-            <p className='p-3'>
-                <b>Episode:</b> {episode.name} ({episode.episode}) - {episode.air_date}
+            <div className='text-white row justify-content-center p-3 h2'>
+                Score: {score}
+            </div>
+            <p className='p-3 text-center text-white h3'>
+                {
+                    loading ? (
+                        <div className='text-white'>Loading...</div>
+                    ) : (
+                        <>
+                            <b>Episode:</b> {episode.name} ({episode.episode}) - {episode.air_date}
+                        </>
+                    )
+                }
             </p>
             <div className='container'>
-                <div className='row'>
-                    {options.map((option) => (
-                        <div key={option.id} className='col-lg-3 col-md-6 col-sm-12 p-3'>
-                            <div className='text-center shadow-sm rounded overflow-hidden btn p-0 w-100' onClick={() => onOptionClick(option)}>
-                                {!loaded &&
-                                    <div className='ratio ratio-1x1'>
-                                        <div className='d-flex align-items-center justify-content-center'>
-                                            <div className='spinner-border' role='status'></div>
-                                        </div>
-                                    </div>
-                                }
-                                <img
-                                    src={option.image}
-                                    alt={option.name}
-                                    onLoad={handleLoad}
-                                    style={{ display: loaded ? 'block' : 'none' }}
-                                    className="w-100"
-                                />
-                                <div className='p-3' style={{ fontSize: "14px" }}>
-                                    {option.name}
-                                </div>
+                <div className='row position-relative'>
+                        {options.map((option) => (
+                            <div key={option.id} className='col-lg-3 col-md-6 col-sm-12 p-3'>
+                                <Card character={option} />
                             </div>
-                        </div>
-                    ))}
-                </div>
-                <div className='row justify-content-center p-3'>
-                    Score: {score}
+                        ))}
+                        {loading &&
+                            <div style={{position: "absolute", left: 0, right: 0, top: 0, bottom: 0, zIndex: 10}}>
+
+                            </div>
+                        }
                 </div>
             </div>
         </div >
