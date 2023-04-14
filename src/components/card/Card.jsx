@@ -30,7 +30,7 @@ export default function Card({ character }) {
     return (
         <animated.div style={props}>
             <div
-                className={'rm-card text-center shadow rounded overflow-hidden p-2 w-100 ' + statusClass}
+                className={'rm-card text-center shadow rounded p-0 w-100 ' + statusClass}
                 onClick={() => onCardClick(character)}>
                 {!loaded &&
                     <div className='ratio ratio-1x1'>
@@ -39,17 +39,17 @@ export default function Card({ character }) {
                         </div>
                     </div>
                 }
-                <div className='mb-2'>
+                <div className=' overflow-hidden rounded-top'>
                     <img
                         src={character.image}
                         alt={character.name}
                         onLoad={handleLoad}
                         style={{ display: loaded ? 'block' : 'none' }}
-                        className="w-100 rounded shadow"
+                        className="w-100"
                     />
                 </div>
                 <div className='' style={{ fontSize: "14px" }}>
-                    <div className='w-100 p-2'>
+                    <div className='w-100 p-3'>
                         {character.name}
                     </div>
                 </div>
