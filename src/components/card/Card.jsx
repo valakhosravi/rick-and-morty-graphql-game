@@ -1,15 +1,15 @@
 import "./Card.scss";
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import { useDispatch } from "react-redux";
 import { decrement, increment } from "../../redux/slices/ScoreSlice";
 
 export default function Card({ character }) {
     const dispatch = useDispatch();
-    
+
     const props = useSpring({ transform: 'scale(1)', from: { transform: 'scale(0)' } });
-    
+
     const [loaded, setLoaded] = useState(false);
     const [statusClass, setStatusClass] = useState('');
 
