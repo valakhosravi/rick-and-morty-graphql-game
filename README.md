@@ -1,5 +1,5 @@
 # Rick and Morty Episode Quiz
-The Rick and Morty Episode Quiz is a simple game that challenges players to identify the character that did not appear in a given episode of the popular animated series, Rick and Morty. The game is built using HTML, CSS, and JavaScript and utilizes the Rick and Morty API (https://rickandmortyapi.com/graphql) to access episode information and character data.
+The Rick and Morty Episode Quiz is a simple game that challenges players to identify the character that did not appear in a given episode of the popular animated series, Rick and Morty. The game is built using React and utilizes the Rick and Morty API (https://rickandmortyapi.com/graphql) to access episode information and character data.
 
 ## How to Play
 To play the game, simply follow these steps:
