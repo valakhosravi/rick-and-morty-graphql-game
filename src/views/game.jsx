@@ -178,9 +178,6 @@ export default function Game() {
                         </div>
                     }
                 </div>
-                {/* <div className="mb-5">
-                    <button onClick={() => setShowNoticePopup(true)} className='btn btn-outline-primary px-5 text-white'>Game Guide</button>
-                </div> */}
             </div>
         </div >
     );
