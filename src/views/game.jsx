@@ -114,8 +114,33 @@ export default function Game() {
                         </div>
                     </div>
                     <div className=''>
-                        <button onClick={() => setShowNoticePopup(false)} className='btn btn-primary px-5 rounded-0 text-white'>Understood</button>
+                        <button onClick={() => setShowNoticePopup(false)} className='btn btn-primary px-5 text-white'>Understood</button>
                     </div>
+                </Popup>
+            }
+            {
+                level >= 10 &&
+                <Popup>
+                    <div>
+                        <div className='text-primary h3 mb-3'>
+                            <b>Congratulations!</b>
+                        </div>
+                        <div className='mb-3 fw-bold'>
+                            You have finished the game
+                        </div>
+                        <div className='mb-3'>
+                            Your final score is:
+                            <span className={score >= 0 ? 'text-success' : 'text-danger'}>
+                                {' ' + score}
+                            </span>
+                        </div>
+                        <div className='mb-3'>
+                            If you want to play this game again, click on the button below
+                        </div>
+                        <div>
+                            <button onClick={() => window.location.reload()} className='btn btn-primary px-5 text-white'>Replay</button>
+                    </div>
+                </div>
                 </Popup>
             }
             <div className='text-white justify-content-center p-3 h3'>
@@ -154,7 +179,7 @@ export default function Game() {
                     }
                 </div>
                 {/* <div className="mb-5">
-                    <button onClick={() => setShowNoticePopup(true)} className='btn btn-outline-primary px-5 rounded-0 text-white'>Game Guide</button>
+                    <button onClick={() => setShowNoticePopup(true)} className='btn btn-outline-primary px-5 text-white'>Game Guide</button>
                 </div> */}
             </div>
         </div >
