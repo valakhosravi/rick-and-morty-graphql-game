@@ -1,70 +1,21 @@
-# Getting Started with Create React App
+# Rick and Morty Episode Quiz
+The Rick and Morty Episode Quiz is a simple game that challenges players to identify the character that did not appear in a given episode of the popular animated series, Rick and Morty. The game is built using React and utilizes the Rick and Morty API (https://rickandmortyapi.com/graphql) to access episode information and character data.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to Play
+To play the game, simply follow these steps:
 
-## Available Scripts
+1. Open the game by clicking on the link provided.
+2. You will be presented with the name of an episode of Rick and Morty, along with four character options.
+3. Select the character that did not appear in the episode. If you get it right, you will earn 2 points, but if you choose the wrong character, you will lose 3 points.
+4. Play through 10 rounds, each with a different episode and character options.
+5. At the end of the game, your final score will be the sum of your points across all rounds.
 
-In the project directory, you can run:
+## Scoring System
+In the Rick and Morty Episode Quiz, you will earn 2 points for each correct answer and lose 3 points for each incorrect answer. Your final score will be calculated based on the sum of your points across all rounds.
 
-### `npm start`
+## Technology Used
+This game was built using React, Redux, and GraphQL. The questions and answers are stored in a JavaScript array, which is randomized each time the game is played to ensure a unique experience every time.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+A dynamic score display that updates in real-time as you play
+## Conclusion
+If you're a fan of Rick and Morty and love a good challenge, then the Rick and Morty Episode Quiz is the perfect game for you. So what are you waiting for? Click the link and see if you can outsmart Rick and Morty themselves!
