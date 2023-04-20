@@ -3,34 +3,22 @@ import { gql, useQuery } from "@apollo/client";
 import Card from '../components/card/Card';
 import { useSelector } from 'react-redux';
 import Popup from '../components/popup/Popup';
+import { useCallback } from 'react';
 
 export default function Game() {
     const score = useSelector((state) => state.score.value);
+    const level = useSelector((state) => state.level.value);
 
     const [query, setQuery] = useState(getQuery(generateRandomDistinctNumbers(2, 1, 42).join(', ')));
     const [options, setOptions] = useState([]);
-    const [level, setLevel] = useState(0);
     const [showNoticePopup, setShowNoticePopup] = useState(true);
 
     const { loading, error, data } = useQuery(query);
 
     const episode = data?.episodesByIds[0];
 
-    useEffect(() => {
-        if (data) {
-            const { episodesByIds: [{ characters: characters1 }, { characters: characters2 }] } = data;
-            setOptions(prepareOptions(characters1, characters2));
-        }
-    }, [data, error])
-
-
-    useEffect(() => {
-        setLevel(level + 1);
-        setQuery(getQuery(generateRandomDistinctNumbers(2, 1, 42).join(', ')));
-    }, [score])
-
-
-    function prepareOptions(characters1, characters2) {
+    
+    const prepareOptions = useCallback((characters1, characters2) => {
         const secondEpisodeLeftOverCharacters = characters2.filter(character2 =>
             !characters1.some(character1 => character1.id === character2.id)
         );
@@ -42,8 +30,21 @@ export default function Game() {
         });
         const result = [...options1, ...options2];
         return shuffleArray(result);
-    }
+    }, []);
 
+    useEffect(() => {
+        if (data) {
+            const { episodesByIds: [{ characters: characters1 }, { characters: characters2 }] } = data;
+            setOptions(prepareOptions(characters1, characters2));
+        }
+    }, [data, error, prepareOptions])
+
+    useEffect(() => {
+        const ids = generateRandomDistinctNumbers(2, 1, 42);
+        const query = getQuery(ids.join(', '));
+        setQuery(query);
+    }, [score])
+    
     function getQuery(ids) {
         return gql`
             query {

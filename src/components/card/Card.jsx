@@ -1,9 +1,10 @@
 import "./Card.scss";
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSpring, animated } from '@react-spring/web';
 import { useDispatch } from "react-redux";
 import { decrement, increment } from "../../redux/slices/ScoreSlice";
+import { increment as incrementLevel } from "../../redux/slices/LevelSlice";
 
 export default function Card({ character }) {
     const dispatch = useDispatch();
@@ -25,6 +26,7 @@ export default function Card({ character }) {
             setStatusClass('bg-danger')
             dispatch(decrement());
         }
+        dispatch(incrementLevel());
     }
 
     return (
